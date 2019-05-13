@@ -91,6 +91,7 @@
 
 
 <?php
+session_start();
 include './dbcon.php';
 
 if(isset($_POST['but'])){
@@ -103,8 +104,14 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-      
-        echo "<script> window.location.href='studententry.php' </script>";
+
+      $Id=$row["Id"];
+
+      $_SESSION["studid"]=$Id;
+
+
+
+        echo "<script> window.location.href='viewProfile.php' </script>";
 
 
     }
